@@ -1,0 +1,79 @@
+{% set diversity = diversity(tokenized_words) %}
+{% set get_diversity_human = get_stat(diversity,diversity_humans) %}
+{% set get_diversity_gpt = get_stat(diversity,diversity_gpt) %}
+{% set check_diversity_human = check_human(get_diversity_human, get_diversity_gpt) %}
+
+{% set averagewords = average_words_sentences(tokenized_sentences) %}
+{% set get_averagewords_human = get_stat(averagewords,average_humans) %}
+{% set get_averagewords_gpt = get_stat(averagewords,average_gpt) %}
+{% set check_averagewords_human = check_human(get_averagewords_human, get_averagewords_gpt) %}
+
+<!-- {% set pun = pun(user_text) %}
+{% set get_pun_human = get_stat(pun,pun_humans) %}
+{% set get_pun_gpt = get_stat(pun,pun_gpt) %}
+{% set check_pun_human = check_human(get_pun_human, get_pun_gpt) %} -->
+
+{% set sentiment = get_sentiment(clean_txt(user_text)) %}
+{% set get_sentiment_human = get_stat(sentiment,sentiment_humans) %}
+{% set get_sentiment_gpt = get_stat(sentiment,sentiment_gpt) %}
+{% set check_sentiment_human = check_human(get_sentiment_human, get_sentiment_gpt, true, sentiment) %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='flatly.css')}}"/>
+    <title>Prototype - Detecteur Humain/IA</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Prototype - Detecteur Humain/IA</a>
+          </div>
+        </div>
+      </nav>
+
+    <form action="{{ url_for("render")}}" method="get">
+        <table class="table">
+        <thead>
+        <tr>
+        <th scope="col">Facteur</th>
+        <th scope="col">Valeur</th>
+        <th scope="col">Percentile Humain</th>
+        <th scope="col">Percentile IA</th>
+        <th scope="col">Verdict</th>
+        </tr>
+        <tbody>
+        <tr class="{{'table-danger' if not check_diversity_human else 'table-success' }}">
+        <th scope="row">Diversité</th>
+        <td>{{ "%.3f"|format(diversity) }}</td>
+        <td> {{ get_diversity_human[1] }}</td>
+        <td> {{ get_diversity_gpt[1] }}</td>
+        <td> {{ 'Humain' if check_diversity_human else 'IA'}}</td>
+        </tr>
+        <tr class="{{'table-danger' if not check_averagewords_human else 'table-success' }}">
+        <th scope="row">Nombre de mots</th>
+        <td>{{ averagewords }}</td>
+        <td>{{ get_averagewords_human[1] }}</td>
+        <td> {{ get_averagewords_gpt[1] }}</td>
+        <td> {{ 'Humain' if check_averagewords_human else 'IA'}}</td>
+        </tr>
+        <tr class="{{'table-danger' if not check_sentiment_human else 'table-success' }}">
+        <th scope="row">Sentiment</th>
+        <td>{{ "%.3f"|format(sentiment) }}</td>
+        <td> {{ get_sentiment_human[1] }}</td>
+        <td> {{ get_sentiment_gpt[1] }}</td>
+        <td> {{ 'Humain' if check_sentiment_human else 'IA'}}</td>
+        </tr>
+        <!-- <tr class="{{'table-danger' if not check_pun_human else 'table-success' }}">
+          <th scope="row">Ponctuation</th>
+          <td>{{ pun }}</td>
+          <td>{{ get_pun_human[1] }}</td>
+          <td> {{ get_pun_gpt[1] }}</td>
+          <td> {{ 'Human' if check_pun_human else 'IA'}}</td>
+          </tr> -->
+        </table>
+  </body>
+
+</html>

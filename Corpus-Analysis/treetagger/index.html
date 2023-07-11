@@ -1,0 +1,723 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title> TreeTagger </title>
+    <script src="http://cistern.cis.lmu.de/cis.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <!-- This is where the project references are inserted. -->
+    <div id="cisprojects" ></div>
+
+
+<hr>
+<h1>TreeTagger - a part-of-speech tagger for many languages</h1>
+<hr>
+
+<p>
+The TreeTagger is a tool for annotating text with part-of-speech and
+lemma information. It was developed by Helmut Schmid in the TC project
+at the Institute for Computational Linguistics of the University of
+Stuttgart. The TreeTagger has been successfully used to tag German,
+English, French, Italian, Danish, Swedish, Norwegian, Dutch, Spanish,
+Bulgarian, Russian, Portuguese, Belarusian, Ukrainian, Galician,
+Greek, Chinese, Swahili, Slovak, Slovenian, Latin, Estonian, Polish,
+Persian, Romanian, Czech, Coptic and old French texts and is adaptable
+to other languages if a lexicon and a manually tagged training corpus
+are available.
+<p>
+
+Sample output:
+<table>
+<tr>
+<th ALIGN=LEFT>word&nbsp;</th>
+
+<th>pos&nbsp;</th>
+
+<th>lemma&nbsp;</th>
+</tr>
+
+<tr>
+<td>The&nbsp;</td>
+
+<td>DT&nbsp;</td>
+
+<td>the&nbsp;</td>
+</tr>
+
+<tr>
+<td>TreeTagger&nbsp;</td>
+
+<td>NP&nbsp;</td>
+
+<td>TreeTagger&nbsp;</td>
+</tr>
+
+<tr>
+<td>is&nbsp;</td>
+
+<td>VBZ&nbsp;</td>
+
+<td>be&nbsp;</td>
+</tr>
+
+<tr>
+<td>easy&nbsp;</td>
+
+<td>JJ&nbsp;</td>
+
+<td>easy&nbsp;</td>
+</tr>
+
+<tr>
+<td>to&nbsp;</td>
+
+<td>TO&nbsp;</td>
+
+<td>to&nbsp;</td>
+</tr>
+
+<tr>
+<td>use&nbsp;</td>
+
+<td>VB&nbsp;</td>
+
+<td>use&nbsp;</td>
+</tr>
+
+<tr>
+<td>.&nbsp;</td>
+
+<td>SENT&nbsp;</td>
+
+<td>.&nbsp;</td>
+</tr>
+</table>
+
+<p>
+The TreeTagger can also be used as a chunker for English, German,
+French, and Spanish. 
+
+<p>The tagger is described in the following two papers:
+<ul>
+<li>
+Helmut Schmid (1995):
+<A
+HREF="data/tree-tagger2.pdf" target="_blank">Improvements in Part-of-Speech Tagging with an Application to German</A>.
+<I>Proceedings of the ACL SIGDAT-Workshop</I>. Dublin, Ireland. 
+<P>
+</li><li>
+Helmut Schmid (1994):
+<A
+HREF="data/tree-tagger1.pdf" target="_blank">Probabilistic Part-of-Speech Tagging Using Decision Trees</A>.
+<I>Proceedings of International Conference on New Methods in Language
+Processing</I>, Manchester, UK. 
+<P>
+</ul>
+
+<hr>
+<h2>Download</h2>
+
+Executable code for PC-Linux, Windows, Mac-OS, and ARM
+and parameter files for various languages can be downloaded
+via the links below. 
+
+<p>
+This software is freely available for research, education and
+evaluation. For commercial and other licenses, please contact the developer via the email
+address at the bottom of the page.
+
+<p>
+<b><font color="red">Please read
+the <a href="Tagger-Licence" target="_blank">license
+terms</a>, before you download the software!  By downloading the
+software, you agree to the terms stated there. </font></b>
+
+<p>The following steps are necessary to install the TreeTagger (see
+below for the <a href="#Windows">Windows version</a>). Download the files by
+  right-clicking on the link. Then select "save file as". All files should be
+  stored in the same directory.
+<ol>
+<li>
+Download the tagger package for your system
+(<a href="data/tree-tagger-linux-3.2.5.tar.gz">PC-Linux</a>,
+<a href="data/tree-tagger-MacOSX-Intel-3.2.3.tar.gz">Mac OS-X (Intel)</a>,
+<a href="data/tree-tagger-MacOSX-M1-3.2.3.tar.gz">Mac OS-X (M1)</a>,
+<a href="data/tree-tagger-ARM64-3.2.tar.gz">ARM64</a>,
+<a href="data/tree-tagger-ARM32-3.2.tar.gz">ARMHF</a>,
+<a href="data/tree-tagger-ARM32-Android-3.2.2.tar.gz">ARM-Android</a>,
+<a href="data/tree-tagger-PPC64le-3.2.1.tar.gz">PPC64le-Linux</a>).
+<br>
+If you have problems with your Linux kernel version, download this 
+<a href="data/tree-tagger-linux-3.2-old5.tar.gz">older Linux version</a> and
+rename it to tree-tagger-linux-3.2.5.tar.gz.
+
+
+</li>
+
+<li>
+Download the <a href="data/tagger-scripts.tar.gz">tagging
+scripts</a> into the same directory.</li>
+
+<li>
+Download the installation script <a
+href="data/install-tagger.sh">install-tagger.sh</a>.
+</li>
+
+<li>
+Download the <a href="#parfiles">parameter files</a> for the languages you want to
+process.
+</li>
+
+<li>
+Open a terminal window and run the installation script in the
+directory where you have downloaded the files:</li>
+<em>sh install-tagger.sh</em>
+<li>
+Make a test, e.g.</li>
+<EM>echo 'Hello world!' | cmd/tree-tagger-english</EM>
+<br>or
+<br><EM>echo 'Das ist ein Test.' | cmd/tagger-chunker-german</EM>
+<li>You also might want to have a look at my new part-of-speech tagger <a href="../RNNTagger/" target="_blank">RNNTagger</a>.</li>
+</ol>
+
+Make sure that the installation path contains no blanks and that the files are not automatically unzipped i.e. that the
+file ending .gz is still present. If you have difficulties with the
+installation, have a look at
+the <a href="installation-hints.txt" target="_blank">installation hints</a> (kindly
+provided by Joachim Wagner). 
+<!-- You can also try to install TreeTagger via -->
+<!-- the <a href="#Docker">Docker</a> image kindly provided by Leonardo di Donato. -->
+<p><br>
+<a NAME="parfiles"></a><b>Parameter files</b>
+<ul>
+<li>
+<a
+href="data/belarusian.par.gz">Belarusian
+parameter file</a> (gzip compressed, UTF-8, trained on
+the <a href="https://github.com/UniversalDependencies/UD_Belarusian-HSE" target="_blank">UD Treebank</a>)</li>
+
+<a
+href="data/bulgarian.par.gz">Bulgarian
+parameter file</a> (gzip compressed, UTF-8, <a href="http://bultreebank.org/wp-content/uploads/2017/06/BTB-TR03.pdf" target="_blank">tagset documentation</a>, trained on
+the <a href="http://www.bultreebank.org" target="_blank">Bulgarian
+Treebank</a>)</li>
+
+<li>
+<a
+href="data/catalan.par.gz">Catalan
+parameter file</a> (gzip compressed, UTF8, <a href="http://clic.ub.edu/corpus/en/documentation" target="_blank">tagset documentation</a>)</li>
+
+<li>
+A Chinese parameter file and tokenizer created by Serge Sharoff are available <a
+href="http://corpus.leeds.ac.uk/tools/zh" target="_blank">here</a>
+</li> 
+
+<li>
+A Coptic parameter file created by Amir Zeldes is available <a
+href="https://github.com/CopticScriptorium/tagger-part-of-speech" target="_blank">here</a>
+</li> 
+
+<li>
+<a href="data/czech.par.gz">Czech
+parameter file</a> (gzip compressed, UTF-8, trained on
+the <a href="https://ufal.mff.cuni.cz/cac" target="_blank">Czech Academic Corpus</a>)</li>
+
+<li>
+<a
+href="data/danish.par.gz">Danish
+parameter file</a> trained on the <a href="http://korpus.dsl.dk/resources.html"
+				     target="_blank">ePAROLE corpus</a> (gzip compressed, UTF-8, <a href="http://korpus.dsl.dk/clarin/corpus-doc/pos-design.pdf" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/dutch.par.gz">Dutch
+parameter file</a> (gzip compressed, UTF-8, <a href="data/dutch-tagset.txt" target="_blank">tagset documentation</a>)</li>
+
+<li>
+Another <a
+href="data/dutch2.par.gz">Dutch
+parameter file</a> (gzip compressed, UTF8, trained on the
+<a href="http://tst-centrale.org/nl/tst-materialen/corpora/eindhoven-corpus-detail"
+   target="_blank">Eindhoven corpus</a>, <a href="data/ehc_handleiding_nl.pdf"
+					    target="_blank">tagset
+  documentation</a> (starts on page 9))</li>
+
+<li>
+<a
+href="data/english.par.gz">English
+parameter file (PENN tagset)</a> (gzip compressed,
+UTF8, <a href="data/Penn-Treebank-Tagset.pdf" target="_top">tagset documentation</a>, trained
+on the Penn treebank)</li>
+
+<li>
+<a
+href="data/english-bnc.par.gz">English
+parameter file (BNC tagset)</a> (gzip compressed,
+UTF8, <a href="http://www.natcorp.ox.ac.uk/docs/c5spec.html" target="_blank">tagset documentation</a>, trained
+on the British National Corpus)</li>
+
+<li>
+<a
+href="data/estonian.par.gz">Estonian
+parameter file</a> (gzip compressed, UTF-8, <a href="http://www.cl.ut.ee/korpused/morfliides/seletus" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a href="data/finnish.par.gz">Finnish parameter file</a>
+trained on
+the <a href="http://www.ling.helsinki.fi/kieliteknologia/tutkimus/treebank/index.shtml" target="_blank">Finnish
+  Treebank</a> (gzip compressed,
+UTF-8, <a href="http://www.ling.helsinki.fi/kieliteknologia/tutkimus/treebank/sources/FinnTreeBankManual.pdf" target="_blank">tagset
+  documentation</a>).
+</li> 
+
+<li>
+<a
+href="data/french.par.gz">French
+parameter file</a> (gzip compressed, UTF-8, <a href="data/french-tagset.html" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/french-spoken.par.gz">Spoken French
+parameter file</a> (gzip compressed, UTF-8, <a href="data/spoken-french-annotation-manual.pdf" target="_blank">tagset documentation</a>) trained on the <a href="https://www.ortolang.fr/market/corpora/perceo" target="_blank">Perceo corpus</a></li>
+
+<li>
+A parameter file for spoken French texts can be
+found <a href="data/french-spoken.par.gz"">here</a>
+</li> 
+
+<li>
+<a href="data/old-french.par.gz">Old French
+parameter file</a> (gzip compressed, UTF-8, <a href="http://bfm.ens-lyon.fr/spip.php?article176" target="_blank">tagset documentation</a>) trained on the <a href="http://bfm.ens-lyon.fr/">Base de Français Médiéval</a></li>
+
+<li>
+<a
+href="data/galician.par.gz">Galician
+parameter file</a> (gzip compressed, UTF8, <a href="http://corpus.cirp.es/xiada/etiquetario.html" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/german.par.gz">German
+parameter file</a> (gzip compressed, UTF-8, <a href="data/STTS-Tagset.pdf" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/german-spoken.par.gz">Spoken German
+parameter file</a> (gzip compressed, Latin-1, <a href="https://ids-pub.bsz-bw.de/frontdoor/deliver/index/docId/6063/file/Westpfahl_Schmidt_Jonietz_Borlinghaus_STTS_2_0_2017.pdf" target="_blank">tagset documentation</a>)</li> trained on the <a href="https://dgd.ids-mannheim.de/DGD2Web/ExternalAccessServlet?command=goldStandard&corpus=FOLK-POS" target="_blank">FOLK corpus</a> provided by the Institut für Deutsche Sprache (IDS) Mannheim
+
+<li>
+<a
+href="data/middle-high-german.par.gz">Middle High German
+parameter file</a> trained by Sarah Schulz on
+the <a href="http://mhdbdb.sbg.ac.at/" target="_blank">Middle High German
+  Conceptual Database</a> (gzip compressed, UTF-8, <a href="https://elib.uni-stuttgart.de/bitstream/11682/9040/1/Ein%20PoS-Tagger%20f%c3%bcr%20das%20Mittelhochdeutsche.pdf" target="_blank">paper</a> (in German))</li>
+
+<li>
+<a
+href="data/greek.par.gz">Greek
+parameter file</a> trained on the <a href="http://hdl.grnet.gr/11500/ATHENA-0000-0000-25B4-B" target="_blank">INTERA corpus</a> (gzip compressed, UTF8, <a href="http://nlp.ilsp.gr/nlp/tagset_examples/tagset_en" target="_blank">tagset documentation</a>)</li>
+
+<li>
+Ancient Greek parameter file
+(<a href="data/ancient-greek.par.gz">UTF8 encoding</a>
+or <a href="data/ancient-greek-beta.par.gz" target="_blank">beta
+    encoding</a>) trained on the <a href="https://proiel.github.io/" target="_blank">PROIEL</a>
+and <a href="http://www.perseus.tufts.edu" target="_blank">Perseus</a>
+treebanks and kindly provided by Alessandro
+Vatri and Barbara McGillivray (gzip compressed, no lemmas, <a href="data/tagsetdocs.txt" target="_blank">tagset documentation</a>)</li>
+
+<li>
+A Hausa parameter file created by Amir Zeldes is available <a
+href="https://github.com/amir-zeldes/hausa" target="_blank">here</a>
+</li> 
+
+<li>
+  <a href="data/hungarian.par.gz">Hungarian
+  parameter file</a> (gzip compressed, UTF8, trained on data annotated with <a href="https://rgai.inf.u-szeged.hu/magyarlanc" target="_blank">magyarlanc</a>)
+  </li>
+
+<li>
+The <a
+href="data/indonesian.par.gz">Indonesian
+parameter file</a> (gzip compressed, UTF8, <a href="https://bahasa.cs.ui.ac.id/pos\
+tag/downloads/Tagset.pdf" target="_blank">tagset documentation</a>) has been trained by <a href="mailto:prihantoro@live.undip.ac.id">Prihantoro</a> on the <a href="https://github.com/famrashel/idn-tagged-corpus" target="_blank">UI corpus</a> using lexical information from the <a href="https://datahub.io/aps2201/kateglo_scrape#resource-kateglo_scrape_zip" target="_blank">Kateglo dictionary</a>.</li>
+
+<li>
+<a
+href="data/italian.par.gz">Italian
+parameter file</a> (gzip compressed, UTF8, <a href="data/italian-tagset.txt" target="_blank">tagset documentation</a>)</li>
+
+<li>
+Marco Baroni's <a
+href="data/italian2.par.gz">Italian
+parameter file</a> (gzip compressed, Latin1, <a href="http://sslmit.unibo.it/~baroni/collocazioni/itwac.tagset.txt"
+target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/korean.par.gz">Korean
+parameter file</a> (gzip compressed,
+UTF8, <a href="http://www.smart21.kr/sj21tagset.html"
+	 target="_blank">tagset documentation</a>). This
+parameter file was created in joint work with <a href="http://smart21.kr/" target="_blank">Prof. Lee Minhaeng</a> on data
+kindly provided by the <a href="http://nlplab.ulsan.ac.kr" target="_blank">KLPLAB</a>
+headed by Prof. Ock Cheol-Young.</li>
+
+<li>
+<a href="data/latin.par.gz">Latin
+parameter file</a> (gzip compressed, <a href="data/Lamap-Tagset.pdf" target="_blank">tagset info in Italian</a>)</li>
+The corpus and
+lexicon for training the Latin parameter file have been compiled by
+Gabriele Brandolini from
+<a href="data/Latin-parameter-file-readme" target="_blank">various resources</a></li>
+
+<li>
+Another <a href="data/latinIT.par.gz">Latin
+parameter file</a> (gzip compressed, <a href="http://itreebank.marginalia.it/doc/Tagset_IT.pdf" target="_blank">tagset
+    info</a>) which has been trained on
+the <a href="http://itreebank.marginalia.it" target="_blank">Index
+  Thomisticus Treebank</a> which was kindly provided by Marco Passarotti.
+</li> 
+
+<li>
+<a href="data/mongolian.par.gz">Mongolian
+parameter file</a> (gzip compressed) created from a small Mongolian corpus by Khuder Altangerel</a>.</li>
+</li> 
+
+<li>
+<a
+href="data/norwegian.par.gz">Norwegian (Bokmaal)
+parameter file</a> trained on the <a href="http://www.nb.no/sbfil/tekst/20140328_NDT_1-01.tar.gz" target="_blank">Norwegian Dependency Treebank</a> (gzip compressed, UTF-8) with tags mapped to the <a href="https://github.com/UniversalDependencies/UD_Norwegian-Bokmaal" target="_blank">universal dependency tagset</a></li>
+
+<li>
+<a href="data/persian.par.gz">Persian (Farsi) parameter file</a>
+trained on the <a href="https://universaldependencies.org/treebanks/fa_perdt/index.html" target="_blank">Persian Dependency Treebank</a>
+ (gzip compressed, UTF8, <a href="https://universaldependencies.org/treebanks/fa_perdt/index.html" target="_blank">tagset description</a>).
+</li> 
+
+<li>
+<a href="data/persian-coarse.par.gz">Persian (Farsi) parameter file with coarse tagset</a>
+trained on the <a href="https://universaldependencies.org/treebanks/fa_perdt/index.html" target="_blank">Persian Dependency Treebank</a>
+ (gzip compressed, UTF8, <a href="https://universaldependencies.org/treebanks/fa_perdt/index.html" target="_blank">tagset description</a>).
+</li> 
+
+<li>
+<a href="data/polish.par.gz">Polish parameter file</a>
+trained on the <a href="http://nkjp.pl" target="_blank">Polish National Corpus</a>
+ (gzip compressed, UTF8, <a href="http://nkjp.pl/poliqarp/help/ense2.html" target="_blank">tagset description</a>).
+</li> 
+
+<li>
+<a href="data/portuguese.par.gz">Portuguese parameter file</a>
+provided by Pablo Gamallo
+ (gzip compressed, UTF8, <a href="data/Portuguese-Tagset.html" target="_blank">tagset description</a>).
+</li> 
+
+<li>
+<a href="data/portuguese-finegrained.par.gz">Portuguese
+  parameter file with fine-grained tagset</a>
+provided by Pablo Gamallo
+ (gzip compressed, UTF8, <a href="data/Portuguese-Tagset.html" target="_blank">tagset description</a>).
+</li> 
+
+<li>
+Another <a href="data/portuguese2.par.gz">Portuguese parameter file</a>
+trained on
+the <a href="https://github.com/UniversalDependencies/UD_Portuguese-Bosque" target="_blank">Floresta
+    Sintá(c)tica</a> corpus and the <a href="http://www.nilc.icmc.usp.br/nilc/projects/unitex-pb/web/dicionarios.html" target="_blank">Unitex lexicon</a> (gzip compressed, UTF8).
+</li> 
+
+<li>
+<a
+href="data/romanian.par.gz">Romanian
+parameter file</a> (gzip compressed, UTF8, <a
+href="http://nl.ijs.si/ME/V4/msd/tables/msd-human-ro.tbl" target="_blank">tagset</a>,
+created with the help of Cristian Chirita using a
+MULTEXT-East <a href="https://www.clarin.si/repository/xmlui/handle/11356/1043"
+		target="_blank">corpus</a>
+and <a href="https://www.clarin.si/repository/xmlui/handle/11356/1041" target="_blank">lexicon</a>)</li>
+
+<li>
+<a
+href="data/russian.par.gz">Russian
+parameter file</a> (gzip compressed, UTF8, <a
+href="http://corpus.leeds.ac.uk/mocky/ru-table.tab" target="_blank">tagset</a>
+trained on a <a
+href="http://corpus.leeds.ac.uk/mocky/" target="_blank">corpus</a> created
+by Serge Sharoff)</li>
+
+<li>
+<a
+href="data/slovak.par.gz">Slovak
+parameter file</a> (gzip compressed, UTF8)</li>
+The Slovak parameter file was trained on the <a
+href="http://korpus.juls.savba.sk/index_en.html" target="_blank">Slovak National
+  Corpus</a>. The <a href="http://korpus.juls.savba.sk/morpho_en.html" target="_blank">tagset</a> was simplified.
+</li>
+
+<li>
+<a
+href="data/slovak2.par.gz">Slovak
+parameter file (full tags)</a> (gzip compressed, UTF-8)</li>
+The Slovak parameter file was trained on the <a
+href="http://korpus.juls.savba.sk/index_en.html" target="_blank">Slovak National
+  Corpus</a>. The <a href="http://korpus.juls.savba.sk/morpho_en.html" target="_blank">tagset</a> was not simplified (just a marker for typos was
+removed). Many thanks to <a href="http://www.juls.savba.sk/~vladob" target="_blank">Vladimir Benko</a> for suggesting to train on the full
+tagset and also for his bug reports.
+</li>
+
+<li>
+<a
+href="data/slovenian.par.gz">Slovenian
+parameter file</a> (gzip compressed, UTF-8)</li>
+The Slovenian parameter file was trained on the <a
+href="http://hdl.handle.net/11356/1029" target="_blank">ssj500k 1.3</a>
+training corpus. The tagset is documented <a href="http://nl.ijs.si/jos/msd/html-en/index.html" target="_blank">here</a>.
+</li>
+
+<li>
+<a
+href="data/spanish.par.gz">Spanish
+parameter file</a> (gzip compressed, UTF-8, <a href="data/spanish-tagset.txt" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/spanish-ancora.par.gz">Spanish
+parameter file trained on the Ancora corpus</a> (gzip compressed, UTF-8, <a href="http://clic.ub.edu/corpus/en/documentation" target="_blank">tagset documentation</a>)</li>
+
+<li>
+<a
+href="data/swahili.par.gz">Swahili
+parameter file</a> (gzip compressed)</li>
+The Swahili parameter file was trained on the <a
+href="http://www.aakkl.helsinki.fi/cameel/corpus/intro.htm" target="_blank">Helsinki Corpus of
+  Swahili</a> (HCS) and uses a simplified version of the <a href="http://www.aakkl.helsinki.fi/cameel/corpus/swatags.pdf" target="_blank">SALAMA tagset</a>. The HCS
+was created by Prof. Arvi Hurskainen by means of his Swahili Language Manager
+(SALAMA) which uses Lingsoft's TWOL compiler for constructing morphological
+analysers and Connexor's CG2  parser for syntactic disambiguation. The creation
+of the parameter file was joint work with Gabriele Brandolini.
+
+<li>
+<a
+href="data/swedish.par.gz">Swedish
+parameter file</a> (gzip compressed, UTF-8, <a href="https://cl.lingfil.uu.se/~nivre/swedish_treebank/#morph" target="_blank">tagset documentation</a>) trained on the Talbanken corpus and the Stockholm University Strindberg Corpus</li>
+
+<li>
+<a
+href="data/ukrainian.par.gz">Ukrainian
+parameter file</a> (gzip compressed, UTF-8, trained on
+the <a href="https://universaldependencies.org/treebanks/uk_iu/index.html" target="_blank">UD Treebank</a>)</li>
+
+</ul>
+
+<b>Chunker parameter files for PC (Linux, Windows, and Mac-Intel)</b>
+<ul>
+
+<li>
+<a href="data/english-chunker.par.gz">English
+chunker parameter file</a> (gzip compressed, UTF8, <a href="data/chunker-tagset-english.txt" target="_blank">tagset info</a>)
+<br>Note: The English tagger parameter file is needed, as well.
+
+<li>
+<a
+href="data/french-chunker.par.gz">French
+chunker parameter file</a> (gzip compressed, UTF-8)
+<br>The chunker was trained on the French treebank whose annotation guidelines
+are documented <a href="http://www.llf.cnrs.fr/en/Gens/Abeille/French-Treebank-fr.php" target="_blank">here</a>.
+<br>Note: The French tagger parameter file is needed, as well.
+</li>
+
+<li>
+<a
+href="data/german-chunker.par.gz">German
+chunker parameter file</a> (gzip compressed, UTF-8, <a href="data/chunker-tagset-german.txt" target="_blank">tagset info</a>)
+<br>Note: The German tagger parameter file is needed, as well.
+</li>
+
+<li>
+<a
+href="data/spanish-chunker.par.gz">Spanish
+chunker parameter file</a> (gzip compressed, UTF-8)
+<br>Note: The Spanish tagger parameter file is needed, as well.
+</li>
+</ul>
+
+
+
+<a NAME="Windows"><b>Windows version</b></a>
+
+<p>
+Windows versions of the TreeTagger are
+available  <a href="data/tree-tagger-windows-3.2.3.zip">
+for Windows64</a> and  <a href="data/tree-tagger-windows32-3.2.3.zip">
+for Windows32</a>. Unpack the zip file and follow the instructions in the INSTALL.txt file. The parameter files have to be downloaded separately. The
+tagger has to be invoked from a (Windows, cygwin, msys)
+shell. Therefore, you might want to install
+the <a href="http://www.smo.uhi.ac.uk/~oduibhin/oideasra/interfaces/winttinterface.htm"
+target="_blank">graphical interface</a> kindly provided by Ciar&aacute;n &Oacute;
+Duibh&iacute;n.
+<p>
+
+<h2>Acknowledgments</h2>
+
+<p>
+The Russian parameter file was created on a corpus provided by Serge
+Sharoff. He has a <a
+href="http://corpus.leeds.ac.uk/mocky/" target="_blank">webpage</a> with various
+ resources for Russian NLP.
+
+<p>
+The French and the Italian parameter files are provided by <a
+href="https://sites.google.com/site/achimstein" target="_blank">Achim
+Stein</a>.
+<p>
+The parameter file for the French chunker was created by Michel G&eacute;n&eacute;reux.
+<p>
+The second Italian parameter files was provided by <a
+href="http://sslmit.unibo.it/~baroni/" target="_blank">Marco Baroni</a>.
+<p>
+The English parameter file was trained on
+the <a href="https://catalog.ldc.upenn.edu/LDC99T42" target="_blank">PENN
+treebank</a> and uses the <a href="http://www.cis.upenn.edu/~xtag"
+target="_blank">English morphological database</a> created by Karp,
+Schabes, Zaidel and Egedi.
+<p>
+The Spanish parameter file was trained on
+the <a href="https://eprints.lancs.ac.uk/id/eprint/130292"
+target="_blank">Spanish CRATER corpus</a> and uses the Spanish lexicon
+of the CALLHOME corpus of
+the <a href="http://www.ldc.upenn.edu" target="_blank">LDC</a>.
+<p>
+The Spanish chunker was trained on
+the <a href="http://www.iula.upf.edu/recurs01_tbk_uk.htm"
+target="_blank">IULA Spanish treebank</a>.
+<p>
+The Galician parameter file was trained on
+the <a href="http://corpus.cirp.es/xiada"
+target="_blank">Xiada corpus</a> provided by the <a href="http://www.cirp.es" target="_blank">Centro Ram&oacute;n Pi&ntilde;eiro para a Investigaci&oacute;n en Humanidades</a>
+<p>
+The Bulgarian parameter file was created by Julien Nioche on
+the <a href="http://www.bultreebank.org" target="_blank">Bulgarian
+Treebank</a>. It uses UTF-8 encoding and
+the <a href="http://www.bultreebank.org/TechRep/BTB-TR03.pdf"
+target="_blank">BulTreeBank</a> tagset.
+<p> Michel G&eacute;n&eacute;reux created the
+parameter file for the French chunker.
+<p>
+The Estonian parameter file was trained on
+the <a href="http://www.cl.ut.ee/korpused/morfkorpus"
+target="_blank">Tartu Morphologically disambiguated corpus</a>. Thanks
+to Mark Fishel for pointing me to this data!
+<p>
+Many thanks to Marco Baroni, Pablo Gamallo,
+Julien Nioche, Serge Sharoff, Michel G&eacute;n&eacute;reux, and Achim
+Stein for making their parameter files publicly available! Also thanks
+to Holger Wunsch and Cassio Binkowski for compiling the TreeTagger on MacOS and to Florian Bemmann for compiling it for Android systems!
+<hr>
+<h2>Links</h2>
+
+<ul>
+<li> <a href="http://www.smo.uhi.ac.uk/~oduibhin/oideasra/interfaces/winttinterface.htm"
+target="_blank">Graphical Interface</a> for the Windows version of the
+TreeTagger (developed by Ciar&aacute;n &Oacute;
+Duibh&iacute;n)</li>
+
+<br>
+<li> <a
+href="http://corpus.leeds.ac.uk/tools/zh" target="_blank">
+Serge Sharoffs web page</a> where you can download a tokenizer and a parameter file for Chinese.
+</li> 
+
+<li> <a
+href="http://gramatica.usc.es/~gamallo/index.html" target="_blank">
+Pablo Gamallos web page</a> who provides resources
+for Portuguese and Galician.
+</li> 
+
+<li> <a href="https://sites.google.com/site/achimstein/research/resources"
+target="_blank"> Achim Stein's web page</a> on French and old French
+POS tagging with the TreeTagger</li>
+
+<br>
+<li> <a href="http://www.limsi.fr/Individu/pointal/doku.php?id=dev:treetaggerwrapper"
+target="_blank"> Python Wrapper</a> for the TreeTagger (developed
+by Laurent Pointal)</li>
+
+<li> <a href="https://reckart.github.io/tt4j/"
+target="_blank">Java Wrapper</a> for the TreeTagger (developed
+by Richard Eckart de Castilho)</li>
+
+<li> <a href="https://github.com/nyxtom/treetagger"
+target="_blank">JavaScript wrapper</a> for the TreeTagger (developed
+by Thomas Holloway)</li>
+
+<li> <a href="http://search.cpan.org/dist/Lingua-TreeTagger/"
+target="_blank">Perl module</a> for calling the TreeTagger and manipulating its output (developed
+by Aris Xanthos)</li>
+
+<li> <a href="http://reaktanz.de/?c=hacking&s=koRpus"
+target="_blank">R wrapper</a> for the TreeTagger (developed
+by Meik Michalke)</li>
+
+<li> <a href="https://github.com/daniel-jach/treetag-fertilizer"
+target="_blank">another R wrapper</a> for the TreeTagger (developed
+by Daniel Jach)</li>
+
+<li> <a href="https://rubygems.org/gems/treetagger-ruby"
+target="_blank">Ruby wrapper</a> for the TreeTagger (developed
+by Andrei Beliankou)</li>
+
+<li> <a href="http://dkpro.github.io/dkpro-core/"
+target="_blank">UIMA wrapper</a> for the TreeTagger (developed
+at the UKP Lab)</li>
+
+<li> <a href="https://github.com/mbeurel/php-lemmatizer/"
+target="_blank">PHP wrapper</a> for the TreeTagger (developed
+by Matthieu Beurel)</li>
+
+<br>
+<li> Giuseppe Attardi's <a
+href="http://medialab.di.unipi.it/Resource/POS/" target="_blank">online
+interface</a> to the TreeTagger.
+</li>
+
+<li><a href="http://elearning.unistrapg.it/TreeTaggerWeb/TreeTagger.html"
+target="_blank">Italian Online Tagger</a> at the University for Foreigners Perugia</li>
+
+<li>Another <a href="http://copa-trad.ufsc.br/#tree-tagger-cloud"
+target="_blank">Online Tagger</a> created by Carlos Eduardo</li>
+
+<li>Webpage on the translation of German texts
+into <a href="https://www.leichte-sprache-schur.de" target="_blank">easy-to-read
+language</a> (in German)</li>
+
+<!-- <li><a NAME="Docker"></a>Leonardo di Donato created -->
+<!--   a <a href="https://registry.hub.docker.com/u/leodido/treetagger/" target="_blank">Docker</a> -->
+<!--   image which simplifies the installation process. -->
+<!-- </li> -->
+</ul>
+
+<BR>
+<!-- The TreeTagger is a component of the following software products (and of many others too): -->
+<!-- <ul> -->
+<!-- <li> <a href="http://www.lingulab.net" target="_blank">Text Analysis Software</a> developed by LinguLab -->
+<!-- <li> <a href="http://www.wikimeta.com" target="_blank">Wikimeta</a> -->
+<!-- </ul> -->
+
+<BR>
+<BR>
+<HR>
+<font size="-1">
+Please send questions, comments, suggestions and bug reports to Helmut
+Schmid at LastName@cis.lmu.de.
+</font>
+<HR>
+<P>
+<BR>
+
+    <!-- Run java script. Set to main(false) to skip CSS part. -->
+    <script type="text/javascript">main(true)</script>
+  </body>
+</html>

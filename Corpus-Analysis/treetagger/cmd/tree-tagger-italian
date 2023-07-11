@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN="/home/qsypoq/Travaux/memoire-ia-text/treetagger/bin"
+CMD="/home/qsypoq/Travaux/memoire-ia-text/treetagger/cmd"
+LIB="/home/qsypoq/Travaux/memoire-ia-text/treetagger/lib"
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/italian-abbreviations
+PARFILE=${LIB}/italian.par
+
+$TOKENIZER -i -a $ABBR_LIST $* |
+$TAGGER $OPTIONS $PARFILE

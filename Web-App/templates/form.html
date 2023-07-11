@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='flatly.css')}}"/>
+    <title>Prototype - Detecteur Humain/IA</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Prototype - Detecteur Humain/IA</a>
+          </div>
+        </div>
+      </nav>
+
+<div>
+<form action="{{ url_for("render")}}" method="post" >
+    <label for="user_text" class="drac-text-white">Entrez le texte à analyser :</label><br \>
+    <textarea autofocus required type="text" id="user_text" name="user_text" placeholder="Your text" cols="50" rows="6" wrap="hard"
+    style="font-size:0.8rem">
+    </textarea><br \>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+</div>
+  </body>
+  </html>

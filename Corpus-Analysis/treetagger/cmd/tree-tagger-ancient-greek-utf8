@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN="/home/qsypoq/Travaux/memoire-ia-text/treetagger/bin"
+CMD="/home/qsypoq/Travaux/memoire-ia-text/treetagger/cmd"
+LIB="/home/qsypoq/Travaux/memoire-ia-text/treetagger/lib"
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+MWL=${CMD}/mwl-lookup.perl
+TAGGER=${BIN}/tree-tagger
+PARFILE=${LIB}/ancient-greek.par
+
+$TOKENIZER $* |
+# tagging
+$TAGGER $OPTIONS $PARFILE
+
